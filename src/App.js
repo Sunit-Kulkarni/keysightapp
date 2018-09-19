@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Item from './Item';
 import Target from './Target';
+import Card from './Card';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
@@ -13,6 +14,37 @@ class App extends Component {
       { id: 2, name: 'Item 2' },
       { id: 3, name: 'Item 3' },
       { id: 4, name: 'Item 4' }
+    ],
+    cards: [
+      {
+        id: 1,
+        text: 'Write a cool JS library'
+      },
+      {
+        id: 2,
+        text: 'Make it generic enough'
+      },
+      {
+        id: 3,
+        text: 'Write README'
+      },
+      {
+        id: 4,
+        text: 'Create some examples'
+      },
+      {
+        id: 5,
+        text:
+          'Spam in Twitter and IRC to promote it (note that this element is taller than the others)'
+      },
+      {
+        id: 6,
+        text: '???'
+      },
+      {
+        id: 7,
+        text: 'PROFIT'
+      }
     ]
   };
 
@@ -49,6 +81,18 @@ class App extends Component {
               ))}
             </div>
             <Target />
+          </div>
+
+          <div className="card-container">
+            {this.state.cards.map((card, i) => (
+              <Card
+                key={card.id}
+                index={i}
+                id={card.id}
+                text={card.text}
+                moveCard={this.moveCard}
+              />
+            ))}
           </div>
         </div>
       </div>
