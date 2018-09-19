@@ -7,6 +7,10 @@ const itemSource = {
   },
 
   endDrag(props, monitor, component) {
+    if (!monitor.didDrop()) {
+      //only delete if dropped in target
+      return;
+    }
     return props.handleDrop(props.item.id);
   }
 };
