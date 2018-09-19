@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Item from './Item';
+import Target from './Target';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 
 class App extends Component {
   state = {
@@ -23,10 +26,11 @@ class App extends Component {
         <div className="App-intro">
           <div className="app-container">
             <div className="item-container">
-              {this.state.items.map((item, index) => {
-                <Item key={item.id} item={item} />;
-              })}
+              {this.state.items.map((item, index) => (
+                <Item key={item.id} item={item} />
+              ))}
             </div>
+            <Target />
           </div>
         </div>
       </div>
@@ -34,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(App);
