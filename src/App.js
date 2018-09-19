@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Item from './Item';
 
 class App extends Component {
+  state = {
+    items: [
+      { id: 1, name: 'Item 1' },
+      { id: 2, name: 'Item 2' },
+      { id: 3, name: 'Item 3' },
+      { id: 4, name: 'Item 4' }
+    ]
+  };
+
   render() {
     return (
       <div className="App">
@@ -10,9 +20,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-intro">
+          <div className="app-container">
+            <div className="item-container">
+              {this.state.items.map((item, index) => {
+                <Item key={item.id} item={item} />;
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
